@@ -1,41 +1,47 @@
-{type User = {
+{interface User {
+    type: 'user',
     name: string,
     age: number,
     group: string,
 };
 
-type Admin = {
+interface Admin {
     type: 'admin',
     name: string;
     age: number;
     role: string;
   }
   
-  type Person = User | Admin;
+type Person = User | Admin;
   
 
 const persons: Person[] = [
   {
+    type: 'user',
     name: 'Иван Петров',
     age: 27,
     group: 'SEO-специалист',
   },
   {
+    type: 'user',
     name: 'Марат Aляуддинов',
     age: 20,
     group: 'Музыкант',
   },
   {
+    type: 'user',
     name: 'Иван Иванов',
     age: 35,
     group: 'Коллеги',
   },
   {
+    type: 'user',
     name: 'Петр Петров',
     age: 23,
     group: 'Друзья',
   },
   {
+    type: 'user',
     name: 'Сергей Сергеев',
     age: 44,
     group: 'Семья',
@@ -49,9 +55,14 @@ const persons: Person[] = [
 
 ];
 
-const logPerson = (person: Person): void => {
-  console.log(`${person.name}, ${person.age}`);
-}
-
-console.log('Users:');
-persons.forEach(logPerson);}
+const logPerson = (person: User | Admin) => {
+    let information: string;
+    if (person.type === 'user') {
+      information = person.group;
+    } else {
+      information = person.role;
+    }
+    console.log(`${person.name}, ${person.age}, ${information}`);
+  };
+  
+  persons.forEach(logPerson);}
