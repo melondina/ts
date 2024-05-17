@@ -1,4 +1,4 @@
-//union
+{//union
 let count:number | void; //union
 count = 1;
 
@@ -210,4 +210,4 @@ const fetchData = (res: HttpRequest): void => {
     if(res.status === 'failed') {
         
     }
-}
+}}
